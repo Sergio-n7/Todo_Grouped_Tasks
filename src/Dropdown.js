@@ -18,27 +18,28 @@ function Dropdown({ multiSelect = false }) {
 
   return (
     <div className="dd-wrapper">
-      <div
-        tabIndex={0}
-        className="dd-header"
-        role="button"
-        onKeyPress={() => toggle(!open)}
-        onClick={() => toggle(!open)}
-      >
-        <div className="dd-header__title">
-          <p className="dd-header__title--bold">{selection.name}</p>
-          <ul className="dd-header__title">
-            {selection.map((selection) => (
+      {selection.map((selection) => (
+        <div
+          tabIndex={0}
+          className="dd-header"
+          role="button"
+          onKeyPress={() => toggle(!open)}
+          onClick={() => toggle(!open)}
+        >
+          <div className="dd-header__title">
+            <p className="dd-header__title--bold">{selection.name}</p>
+
+            <ul className="dd-header__title">
               <li className="dd-header__title--bold" key={selection.id}>
                 {selection.tasks[0].description}
               </li>
-            ))}
-          </ul>
+            </ul>
+          </div>
+          <div className="dd-header__action">
+            <p>{open ? "Close" : "Open"}</p>
+          </div>
         </div>
-        <div className="dd-header__action">
-          <p>{open ? "Close" : "Open"}</p>
-        </div>
-      </div>
+      ))}
       {open && (
         <ul className="dd-list">
           {selection.map((selection) => (
