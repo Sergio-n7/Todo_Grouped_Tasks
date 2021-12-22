@@ -8,13 +8,24 @@ export default function TasksComponent({ selection, markTaskAsDone }) {
   return (
     <div tabIndex={0} className="dd-header" key={selection.name}>
       <ul className="dd-header__title">
-        <li className="dd-header__title-item">{selection.name}</li>
+        <li className="dd-header__title-item" onChange={(event) => {}}>
+          <i className="far fa-clipboard dd-header__title-item--font"></i>
+          {selection.name}
+        </li>
         <li
           className="dd-header__action"
           onKeyPress={() => toggle(!open)}
           onClick={() => toggle(!open)}
         >
-          {open ? "Hide" : "Show"}
+          {open ? (
+            <span>
+              Hide <i className="fas fa-chevron-up"></i>
+            </span>
+          ) : (
+            <span>
+              Show <i className="fas fa-chevron-down"></i>
+            </span>
+          )}
         </li>
       </ul>
 
@@ -27,7 +38,6 @@ export default function TasksComponent({ selection, markTaskAsDone }) {
                   markTaskAsDone(task.id);
                 }}
                 type="checkbox"
-                className="checkbox"
                 checked={task.checked}
               ></input>
               <span className="dd-list-item__name">

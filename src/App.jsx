@@ -26,6 +26,7 @@ function App() {
 
     setSelection(newTaskState);
   }
+
   function sumAllValuesTasks() {
     return selection.reduce((acc, group) => {
       let sumOfAllTaskInGroup = group.tasks.reduce((acc, task) => {
@@ -79,8 +80,10 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Lodgify Groupped Tasks</h1>
-      <ProgressBar normalize={normalize} max={100} />
+      <div className="title-and-progressBar">
+        <h1>Lodgify Groupped Tasks</h1>
+        <ProgressBar normalize={normalize} max={100} />
+      </div>
       <Dropdown
         selection={selection}
         setSelection={setSelection}
