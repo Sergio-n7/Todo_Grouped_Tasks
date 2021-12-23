@@ -5,12 +5,27 @@ export default function TasksComponent({ selection, markTaskAsDone }) {
 
   const toggle = () => setOpen(!open);
 
+  const isGroupComplete = selection.tasks.every(
+    (singeTask) => singeTask.checked
+  );
+
   return (
     <div tabIndex={0} className="dd-header" key={selection.name}>
       <ul className="dd-header__title">
-        <li className="dd-header__title-item" onChange={(event) => {}}>
-          <i className="far fa-clipboard dd-header__title-item--font"></i>
-          {selection.name}
+        <li className="dd-header__title-item">
+          <li onChange={(event) => !isGroupComplete}>
+            {isGroupComplete ? (
+              <span className="complete">
+                <i className="fas fa-clipboard-check dd-header__title-item--font"></i>
+                {selection.name}
+              </span>
+            ) : (
+              <span>
+                <i className="far fa-clipboard dd-header__title-item--font "></i>
+                {selection.name}
+              </span>
+            )}
+          </li>
         </li>
         <li
           className="dd-header__action"
@@ -39,6 +54,7 @@ export default function TasksComponent({ selection, markTaskAsDone }) {
                 }}
                 type="checkbox"
                 checked={task.checked}
+                className="checkbox"
               ></input>
               <span className="dd-list-item__name">
                 {task.description || task.name}

@@ -48,24 +48,32 @@ body {
   border-width: 1px;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
+.progress {
+  background-color: #f6f8f7;
+  border-radius: 20px;
+  position: relative;
+  margin: 30px 0;
+  height: 25px;
+  width: 98%;
+}
+
+.progress-done {
+  background: rgb(68, 196, 174);
+  border-radius: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 10px;
+  height: 100%;
+  width: 0;
+  opacity: 0;
+}
 
 h1 {
   font-size: 20px;
 }
 
-.progress {
-  display: flex;
-  flex-wrap: wrap;
-
-  .bar {
-    width: 95%;
-    padding: 20px;
-  }
-  span {
-    line-height: 40px;
-    margin-left: 10px;
-  }
-}
 .title-and-progressBar {
   margin: 30px 0 10px 20px;
 }
@@ -102,6 +110,9 @@ h1 {
       font-size: 15px;
       list-style-type: none;
     }
+    .complete {
+      color: rgb(68, 196, 174);
+    }
   }
   .dd-header:last-child {
     border-bottom: none;
@@ -124,9 +135,11 @@ h1 {
       padding-bottom: 20px;
       padding-left: 10px;
       margin-top: 13px;
+      display: flex;
 
       &__name {
-        margin-left: 20px;
+        margin-left: 40px;
+        position: relative;
       }
 
       .dd-list-item:last-child {
@@ -138,6 +151,42 @@ h1 {
     }
     .dd-list-item:last-child {
       padding-bottom: 30px;
+    }
+
+    .checkbox {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 5px;
+      border: 1px solid rgb(128, 127, 127);
+      cursor: pointer;
+      position: absolute;
+      margin-bottom: 10px;
+      margin-top: -1px;
+    }
+    .checkbox:checked {
+      background: rgb(68, 196, 174);
+      border: none;
+    }
+    .checkbox::before {
+      content: "";
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background-image: url(checkMark.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .checkbox::before {
+      display: none;
+    }
+    .checkbox:checked::before {
+      display: block;
     }
   }
 }

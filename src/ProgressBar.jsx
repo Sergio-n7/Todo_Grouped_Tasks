@@ -1,11 +1,17 @@
 import React from "react";
 
-export default function ProgressBar({ normalize, max }) {
-  // array.reduce((currentGroup, nextGroup)=> )
+export default function ProgressBar({ normalize }) {
   return (
     <div className="progress">
-      <progress className="bar" value={normalize} max={max}></progress>
-      <span>{Math.floor((normalize / max) * 100)}%</span>
+      <div
+        className="progress-done"
+        style={{
+          opacity: 1,
+          width: `${Math.floor(normalize)}%`,
+        }}
+      >
+        {Math.floor(normalize)}%
+      </div>
     </div>
   );
 }

@@ -84,11 +84,7 @@ function App() {
         <h1>Lodgify Groupped Tasks</h1>
         <ProgressBar normalize={normalize} max={100} />
       </div>
-      <Dropdown
-        selection={selection}
-        setSelection={setSelection}
-        markTaskAsDone={markTaskAsDone}
-      />
+      <Dropdown selection={selection} markTaskAsDone={markTaskAsDone} />
     </div>
   );
 }
