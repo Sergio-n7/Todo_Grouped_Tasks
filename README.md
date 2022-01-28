@@ -1,4 +1,4 @@
-# LODGIFY CHALLENGE
+# Todo-groupped-tasks
 
 ## Create react-app
 
